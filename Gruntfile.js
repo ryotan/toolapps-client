@@ -88,6 +88,17 @@ module.exports = function (grunt) {
           ]
         }
       },
+      e2e: {
+        options: {
+          async: true,
+          port: 9001,
+          base: [
+            '.tmp',
+            'test',
+            '<%= yeoman.app %>'
+          ]
+        }
+      },
       dist: {
         options: {
           base: '<%= yeoman.dist %>'
@@ -372,6 +383,36 @@ module.exports = function (grunt) {
         configFile: 'test/unit.conf.js',
         singleRun: true
       }
+    },
+
+    protractor: {
+      options: {
+        keepAlive: true,
+        noColor: false
+      },
+      e2e: {
+        configFile: 'test/e2e.conf.js'
+      }
+    },
+
+    shell: {
+      options: {
+        stdout: true
+      },
+
+      // Selenium Serverをバックグラウンドで実行
+      start: {
+        command: 'node_modules/protractor/bin/webdriver-manager start',
+        options: {
+          stdout: false,
+          async: true
+        }
+      },
+
+      install: {
+        // Selenium Serverのインストールおよび更新
+        command: 'node_modules/protractor/bin/webdriver-manager update --standalone'
+      }
     }
   });
 
@@ -381,7 +422,7 @@ module.exports = function (grunt) {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
 
-    grunt.task.run([
+    return grunt.task.run([
       'clean:server',
       'bowerInstall',
       'concurrent:server',
@@ -420,6 +461,8 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
+
+  grunt.registerTask('e2e', ['connect:test', 'protractor:e2e']);
 
   grunt.registerTask('default', [
     'newer:jshint',
