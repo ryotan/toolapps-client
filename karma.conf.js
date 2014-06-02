@@ -4,6 +4,7 @@
 // generator-karma 0.8.1
 
 module.exports = function(config) {
+  'use strict';
   config.set({
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
@@ -15,7 +16,18 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
-    files: [],
+    files: [
+      'app/bower_components/angular/angular.js',
+      'app/bower_components/angular-mocks/angular-mocks.js',
+      'app/bower_components/angular-resource/angular-resource.js',
+      'app/bower_components/angular-cookies/angular-cookies.js',
+      'app/bower_components/angular-sanitize/angular-sanitize.js',
+      'app/bower_components/angular-route/angular-route.js',
+      'app/scripts/*.js',
+      'app/scripts/**/*.js',
+      'test/mock/**/*.js',
+      'test/spec/**/*.js'
+    ],
 
     // list of files / patterns to exclude
     exclude: [],
@@ -43,13 +55,13 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: false,
 
     colors: true,
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_INFO
 
     // Uncomment the following lines if you are using grunt's server to run the tests
     // proxies: {
