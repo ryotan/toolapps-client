@@ -5,10 +5,8 @@
 
 module.exports = function(config) {
   'use strict';
-  config.set({
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
 
+  config.set({
     // base path, that will be used to resolve files and exclude
     basePath: '..',
 
@@ -32,8 +30,32 @@ module.exports = function(config) {
     // list of files / patterns to exclude
     exclude: [],
 
+    // use dots reporter, as travis terminal does not support escaping sequences
+    // possible values: 'dots', 'progress'
+    // CLI --reporters progress
+    reporters: ['progress', 'junit'],
+
+    junitReporter: {
+      // will be resolved to basePath (in the same way as files/exclude patterns)
+      outputFile: 'reports/unit/test-results.xml'
+    },
+
     // web server port
-    port: 8080,
+    // CLI --port 9876
+    port: 9876,
+
+    // enable / disable colors in the output (reporters and logs)
+    // CLI --colors --no-colors
+    colors: true,
+
+    // level of logging
+    // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
+    // CLI --log-level debug
+    logLevel: config.LOG_INFO,
+
+    // enable / disable watching file and executing tests whenever any file changes
+    // CLI --auto-watch --no-auto-watch
+    autoWatch: true,
 
     // Start these browsers, currently available:
     // - Chrome
@@ -43,25 +65,30 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: [
-      'PhantomJS'
-    ],
+    // CLI --browsers Chrome,Firefox,Safari
+    browsers: process.env.TRAVIS ? ['Firefox'] : ['PhantomJS', 'Chrome'],
 
-    // Which plugins to enable
-    plugins: [
-      'karma-phantomjs-launcher',
-      'karma-jasmine'
-    ],
+    // If browser does not capture in given timeout [ms], kill it
+    // CLI --capture-timeout 5000
+    captureTimeout: 20000,
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
+    // CLI --single-run --no-single-run
     singleRun: false,
 
-    colors: true,
+    // report which specs are slower than 500ms
+    // CLI --report-slower-than 500
+    reportSlowerThan: 500,
 
-    // level of logging
-    // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO
+    // Which plugins to enable
+    plugins: [
+      'karma-jasmine',
+      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-junit-reporter'
+    ]
 
     // Uncomment the following lines if you are using grunt's server to run the tests
     // proxies: {
