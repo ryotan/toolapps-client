@@ -462,7 +462,7 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('e2e', ['connect:test', 'protractor:e2e']);
+  grunt.registerTask('e2e', ['connect:e2e', 'protractor:e2e']);
 
   grunt.registerTask('default', [
     'newer:jshint',
