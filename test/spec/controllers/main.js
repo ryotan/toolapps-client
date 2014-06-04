@@ -1,5 +1,9 @@
 'use strict';
 
+// HACK: karma-commonjsとangular-mocks上手く動かないんだってさ。。。
+// https://github.com/karma-runner/karma-commonjs/issues/23
+var module = angular.mock.module;
+
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module

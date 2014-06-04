@@ -11,7 +11,7 @@ module.exports = function(config) {
     basePath: '..',
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'commonjs'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -29,6 +29,14 @@ module.exports = function(config) {
 
     // list of files / patterns to exclude
     exclude: [],
+
+    preprocessors: {
+      'test/**/*.js': ['commonjs']
+    },
+
+    commonjsPreprocessor: {
+      modulesRoot: 'app/scripts'
+    },
 
     // use dots reporter, as travis terminal does not support escaping sequences
     // possible values: 'dots', 'progress'
@@ -87,6 +95,7 @@ module.exports = function(config) {
       'karma-phantomjs-launcher',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
+      'karma-commonjs',
       'karma-junit-reporter'
     ]
 
