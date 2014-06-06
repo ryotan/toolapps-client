@@ -2,9 +2,8 @@
 
 angular.module('toolappsClientApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.target = '';
+    $scope.convert = function() {
+      $scope.converted = $scope.target;
+    };
   });
