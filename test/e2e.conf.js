@@ -2,6 +2,9 @@ exports.config = {
   // The address of a running selenium server.
   seleniumAddress: 'http://localhost:4444/wd/hub',
 
+  // Use mocha as BDD framework.
+  framework: 'mocha',
+
   // Spec patterns are relative to the location of this config.
   specs: [
     'e2e/**/*_spec.coffee'
