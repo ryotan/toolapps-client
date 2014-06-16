@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('toolappsClientApp', [
+  .module('ToolboxApplication', [
     'ngCookies',
     'ngResource',
     'ngSanitize',

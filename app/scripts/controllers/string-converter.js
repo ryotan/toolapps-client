@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('toolappsClientApp')
+angular.module('ToolboxApplication')
   .controller('StringConverter', function($scope) {
     $scope.target = '';
     $scope.converted = '';

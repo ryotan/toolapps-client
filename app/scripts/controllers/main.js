@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('toolappsClientApp')
+angular.module('ToolboxApplication')
   .controller('MainCtrl', function($scope) {
   });
