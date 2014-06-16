@@ -1,0 +1,61 @@
+<div class="header">
+  <nav class="navbar navbar-default">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Toolbox Application</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="header-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a ng-href="#string-converter" class="active">String Converter</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="main">
+  <div class="form-group">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">String</span>
+      <label for="s2b" style="display: none;">from String to Bytes</label>
+      <input type="text" class="form-control" id="s2b" ng-model="s2b" placeholder="String to Bytes converter" />
+      <span class="input-group-addon">Bytes</span>
+    </div>
+
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">Bytes</span>
+      <label for="b2b" style="display: none;">from Bytes to Bytes</label>
+      <input type="text" class="form-control" id="b2b" ng-model="b2b" placeholder="Bytes to Bytes converter" />
+      <span class="input-group-addon">Bytes</span>
+    </div>
+
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">Bytes</span>
+      <label for="b2s" style="display: none;">from Bytes to String</label>
+      <input type="text" class="form-control" id="b2s" ng-model="b2s" placeholder="Bytes to String converter" />
+      <span class="input-group-addon">String</span>
+    </div>
+  </div>
+
+  <div class="form-group input-group input-group-lg">
+    <span class="input-group-addon">Target</span>
+    <label for="target" style="display: none;">Target String:</label>
+    <input type="text" class="form-control" id="target" ng-model="target" ng-change="convert()" />
+  </div>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">Converted String:</div>
+    <div class="panel-body">
+      {{ converted }}
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p><span class="glyphicon glyphicon-heart"></span> from ryotan</p>
+</div>
