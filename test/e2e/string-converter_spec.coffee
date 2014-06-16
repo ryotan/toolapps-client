@@ -1,11 +1,9 @@
-'use strict';
-
 chai = require('chai');
 chai.use(require('chai-as-promised'));
 
 expect = chai.expect;
 
-Index = require('./pages/index_page.coffee')
+Index = require('./pages/string-converter_page.coffee')
 
 describe 'Index page', ->
 

@@ -4,18 +4,18 @@
 // https://github.com/karma-runner/karma-commonjs/issues/23
 var module = angular.mock.module;
 
-describe('Controller: MainCtrl', function() {
+describe('Controller: StringConverter', function() {
 
   // load the controller's module
   beforeEach(module('ToolboxApplication'));
 
-  var MainCtrl,
+  var StringConverter,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    StringConverter = $controller('StringConverter', {
       $scope: scope
     });
   }));

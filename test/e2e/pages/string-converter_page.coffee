@@ -1,8 +1,8 @@
-class EncodingPage
+class IndexPage
 
   constructor: ->
     @target = element(By.model('target'))
-    browser.get('/')
+    browser.get('#string-converter')
 
   fill: (str) ->
     element(By.id('target')).sendKeys(str)
@@ -11,4 +11,4 @@ class EncodingPage
   converted: ->
     element(By.binding('converted'))
 
-module.exports = EncodingPage
+module.exports = IndexPage
