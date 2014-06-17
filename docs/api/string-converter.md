@@ -10,13 +10,13 @@ Notes related resources of the **Notes API**
 ### List all Notes [GET]
 + Response 200 (application/json)
 
-        ```json
-        [{
-          "id": 1, "title": "Jogging to park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
-        ```
+```json
+[{
+  "id": 1, "title": "Jogging to park"
+ }, {
+  "id": 2, "title": "Pick-up posters from post-office"
+ }]
+```
 
 ### Create a Note [POST]
 + Request (application/json)
