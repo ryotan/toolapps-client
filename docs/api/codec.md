@@ -6,12 +6,13 @@ FORMAT: 1A
 # Group String Encoder
 文字列の、指定された文字エンコーディングでのバイト列を計算する。
 
-## GET /enc{?encoding,output}
+## GET /enc{?raw,encoding,output}
 
 変換元文字列(`raw`)と、変換後バイト列(`encoded`)、文字エンコーディング(`encoding`)、変換後バイト列のエンコード方法(`output`)を
 格納したJSONを返却する。
 
 + Parameters
+    + raw (required, string) ... エンコード対象の文字列。
     + encoding (required, string, `Windows-31J`) ... 文字列のエンコーディング。
     + output (required, string, `Base64`) ... エンコード後のバイト列を文字列化する方法。`base64`, `hex`, `UrlEncode`
 
