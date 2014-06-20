@@ -3,27 +3,33 @@ FORMAT: 1A
 # Toolbox Application / Codec tools
 文字列のエンコード/デコードや、暗号化、ハッシュ化などの機能を提供するAPIたち。
 
-# Group String Encoder
+# Group Codec Convert
 文字列の、指定された文字エンコーディングでのバイト列を計算する。
 
-## GET /enc{?raw,encoding,output}
+## GET /codec/enc{?raw,s->b,b->b,b->s}
 
-変換元文字列(`raw`)と、変換後バイト列(`encoded`)、文字エンコーディング(`encoding`)、変換後バイト列のエンコード方法(`output`)を
-格納したJSONを返却する。
 
 + Parameters
     + raw (required, string) ... エンコード対象の文字列。
-    + encoding (required, string, `Windows-31J`) ... 文字列のエンコーディング。
-    + output (required, string, `Base64`) ... エンコード後のバイト列を文字列化する方法。`base64`, `hex`, `UrlEncode`
+    + s2b = `"plain"` (required, string) ... エンコード対象の文字列をバイト列化する方法。
+
+        `plain`の場合には、`url-encode:utf-8`として扱う。
+
+        + Values
+            + `base64:utf-8`
+
+    + b2b (required, string) ... 変換するエンコーディング。
+    + b2s (required, string) ... エンコード後のバイト列を文字列化する方法。`base64`, `hex`, `UrlEncode`
 
 + Response 200 (application/json)
 
     ```json
     {
-      "raw": "target string",
-      "converted": "Y29udmVydGVkIHN0cmluZw==",
-      "encoding": "Windows-31J",
-      "output": "base64"
+      "raw": "変換対象の文字列",
+      "converted": "lc+Kt5HOj9uCzJW2jpqX8Q==",
+      "s->b": ":utf-8",
+      "b->b": "Windows-31J",
+      "b->s": "base64"
     }
     ```
 
